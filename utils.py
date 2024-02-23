@@ -6,7 +6,6 @@ from openpyxl import Workbook, load_workbook
 from search_window import search_data
 from openpyxl.utils.dataframe import dataframe_to_rows
 
-
 #borra el texto de los campos
 def clear_entries(entry_fields):
     for entry in entry_fields.values():
@@ -33,7 +32,6 @@ def update_table(table_text, editable=False):
 
     if not editable:
         table_text.config(state=tk.DISABLED)
-
 
 def get_selected_rows(table_text):
     selected_rows = table_text.tag_ranges(tk.SEL)

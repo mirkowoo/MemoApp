@@ -10,7 +10,11 @@ def search_data(root, username_entry, result_label):
 
         for row in sheet.iter_rows(min_row=2, values_only=True):
             if row[6] == username_to_search:
-                result_label.config(text=f"Tipo_solicitud: {row[7]}")
+                
+                if row[7] == "L" :result_label.config(text="Lectura")
+                elif row[7] == "LyE": result_label.config(text="Lectura y Escritura")
+                else:
+                    result_label.config(text="Sin acceso")
                 return
 
         result_label.config(text=f"Usuario '{username_to_search}' no encontrado.")
@@ -30,4 +34,3 @@ def open_search_window(root):
 
     result_label = tk.Label(search_window, text="")
     result_label.grid(row=1, column=0, columnspan=3, padx=5, pady=5)
-
