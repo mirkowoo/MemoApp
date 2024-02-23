@@ -9,8 +9,8 @@ def search_data(root, username_entry, result_label):
         sheet = workbook.active
 
         for row in sheet.iter_rows(min_row=2, values_only=True):
-            if row[6] == username_to_search:  # Assuming usernames are in the seventh column
-                result_label.config(text=f"Data: {username_to_search}:\nTipo_solicitud: {row[1]}")
+            if row[6] == username_to_search:
+                result_label.config(text=f"Tipo_solicitud: {row[7]}")
                 return
 
         result_label.config(text=f"Usuario '{username_to_search}' no encontrado.")

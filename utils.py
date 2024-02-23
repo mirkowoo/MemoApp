@@ -1,4 +1,6 @@
 import tkinter as tk
+import os
+import subprocess
 from tkinter import filedialog
 from openpyxl import Workbook, load_workbook
 from search_window import search_data
@@ -10,7 +12,7 @@ def clear_entries(entry_fields):
     for entry in entry_fields.values():
         entry.delete(0, tk.END)
 #actualiza la tabla de abajo del formulario
-def update_table(table_text, editable=True):
+def update_table(table_text, editable=False):
     table_text.config(state=tk.NORMAL)
     table_text.delete(1.0, tk.END)
 
@@ -37,12 +39,24 @@ def get_selected_rows(table_text):
     selected_rows = table_text.tag_ranges(tk.SEL)
     return selected_rows
 
-def open_excel_file():
-    file_path = filedialog.askopenfilename(filetypes=[('Excel Files', '*.xlsx')])
-    if file_path:
-        # Perform operations with the selected Excel file
-        open(file_path)
-        # print(f'Selected Excel file: {file_path}')
+# def open_excel_file():
+#     # Ask the user to select an Excel file
+#     file_path = filedialog.askopenfilename(filetypes=[('Excel Files', '*.xlsx')])
+
+#     if file_path:
+#         # Get the directory of the selected Excel file
+#         file_directory = os.path.dirname(file_path)
+
+#         # Open the file explorer in the directory
+#         try:
+#             # On Windows
+#             subprocess.Popen(['explorer', file_path], shell=True)
+#         except FileNotFoundError:
+#             # On Linux or macOS (replace 'explorer' with the appropriate file manager command)
+#             subprocess.Popen(['xdg-open', file_directory])
+
+#         # Optionally, you can print the selected Excel file path
+#         print(f'Selected Excel file: {file_path}')
 
 def delete_selected_rows(table_text, row_number_entry, row_display_label):
     try:
